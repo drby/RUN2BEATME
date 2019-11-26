@@ -1,0 +1,7 @@
+<div class="container">
+  <h1>Matchmaking in progress</h1>
+  <p><%= @race.progress %></p>
+  <% @runs.each do |run| %>
+  <p><%= run.user.username %></p>
+  <% end %>
+</div>
