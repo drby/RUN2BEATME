@@ -1,7 +1,20 @@
-<div class="container">
-  <h1>Matchmaking in progress</h1>
-  <p><%= @race.progress %></p>
+<div class="container text-center">
+  <div>
+    <h1>Matchmaking in progress</h1>
+  </div>
+
+  <p>Your opponent is...</p>
   <% @runs.each do |run| %>
   <p><%= run.user.username %></p>
+
+ <div class="avatar-opponents">
+    <%= image_tag "default_avatar"%>
+  </div>
   <% end %>
+
+  <div class="mt-5">
+
+    <h2>Here is the countdown</h2>
+
+  </div>
 </div>

@@ -4,8 +4,8 @@ class RunsController < ApplicationController
     @race.save
 
     @run = Run.new
-    @run.race_id = Race.new
-    @run.user_id = current_user
+    @run.race_id = @race.id
+    @run.user_id = current_user.id
     @run.save
 
     redirect_to race_path(@race)
