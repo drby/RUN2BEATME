@@ -1,0 +1,30 @@
+<div class="container">
+  <% @challenges.each do |challenge| %>
+  <div class="card-challenge">
+    <div class="card-c-infos">
+      <div class="card-c-details">
+        <p>Category: <%= challenge.category %></p>
+        <h1>Distance: <%= challenge.distance / 100 %> km</h1>
+      </div>
+      <div class="card-c-bet">
+        <h2><%= challenge.bet %> €</h2>
+      </div>
+    </div>
+
+    <button class="btn-flat" data-toggle="collapse" data-target="#collapseMap" aria-expanded="false" aria-controls="collapseExample">>
+      Recommanded route
+    </button>
+
+    <div class="collapse c-map-bet" id="collapseMap">
+      <div class="c-map">
+        render "map"
+      </div>
+      <div class="btn-bet">
+        <%= link_to "Bet & Run now !", root_path, class: "btn-flat"  %>
+      </div>
+    </div>
+
+
+  </div>
+  <% end %>
+</div>
