@@ -9,3 +9,19 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.navbar-light .navbar-toggler {
+  border-color: $yellow;
+  background-color: $yellow;
+}
+
+.nav-wallet {
+  font-weight: bold;
+  margin: 0;
+  font-size: small;
+  margin-left: 190px
+}
+
+.nav-item a {
+  color: $yellow;
+}
