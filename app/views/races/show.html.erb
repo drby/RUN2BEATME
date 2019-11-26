@@ -1,7 +1,18 @@
-<div class="container">
+<div
+  id="map"
+  style="width: 100%;
+  height: 600px;"
+  data-markers="<%= @markers.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+>
+  <div class="container">
   <h1>Matchmaking in progress</h1>
   <p><%= @race.progress %></p>
   <% @runs.each do |run| %>
   <p><%= run.user.username %></p>
   <% end %>
 </div>
+
+</div>
+
+
