@@ -20,7 +20,7 @@
         render "map"
       </div>
       <div class="btn-bet">
-        <%= link_to "Bet & Run now !", root_path, class: "btn-flat"  %>
+        <%= link_to "Bet & Run now !", challenge_runs_path(challenge), method: :post, class: "btn-flat"  %>
       </div>
     </div>
 
