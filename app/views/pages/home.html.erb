@@ -1,6 +1,13 @@
-<div class="container">
-  <h1>Run2BeatMe</h1>
-  <p>Principe de l'application</p>
-  <%= link_to "sign-in", user_session_path, class: "btn-flat" %>
+<div class="banner">
+  <div class="banner-content text-center">
+    <div class="home-video-wrapper d-flex align-items-center justify-content-center">
+      <%= video_tag "video.mp4", autoplay: :autoplay, loop: :loop, mute: :mute, class: "home_video" %>
+      <div>
+        <h1 class="home">Run2BeatMe</h1>
+        <p class="home">run faster, win cash</p>
+        <%= link_to "Start Now", user_session_path, class: "btn-flat home" %>
+      </div>
+    </div>
+  </div>
 </div>
 
