@@ -1,0 +1,42 @@
+.card-challenge {
+  background-color: $light-black;
+  border-radius: 4px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.4);
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+.card-c-infos {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-c-bet {
+  background: $light-brown;
+  height: 90px;
+  width: 90px;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.card-c-bet h2 {
+  line-height: 90px;
+}
+
+.card-challenge button {
+  width: 100%;
+  margin: 20px 0;
+}
+
+.c-map-bet {
+  background-color: $gray;
+  height: 500px;
+  width: 100%;
+}
+
+.c-map {
+  background-color: blue;
+  height: 450px;
+  width: 100%;
+}
