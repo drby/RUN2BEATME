@@ -4,9 +4,10 @@
     <% end %>
   <p class="nav-wallet">
     <% if user_signed_in? %>
-      Wallet: <%= current_user.wallet %>
-    <% else %>
-      Wallet: 0
+      <%= current_user.wallet %>
+      <i class="fas fa-coins"></i>
+      <% else %>
+      <i class="fas fa-coins"></i> 0
   <% end %>
   </p>
 
