@@ -1,0 +1,32 @@
+<div class="container">
+  <h1>Your previous runs</h1>
+  <% @runs.each do |run| %>
+  <div class="card-challenge">
+    <div class="card-c-infos">
+      <div class="card-c-details">
+        <p>Run category: <%= run.race.challenge.category %></p>
+        <h1>Run distance: <%= run.race.challenge.distance / 100 %> km</h1>
+        <p>Run date: <%= run.finished_at %></p>
+        <% opponent = run.race.users.select{ |user| user != current_user }.first %>
+        <p>Opponent: <%= opponent.username if opponent %></p>
+      </div>
+      <% if run.won? %>
+        <div>
+          <p class="text-center">you <%= run.state %></p>
+          <div class="card-c-bet">
+            <h2><%= run.race.challenge.bet %> €</h2>
+          </div>
+        </div>
+      <% else %>
+        <div>
+          <p class="text-center">you <%= run.state %></p>
+          <div class="card-c-bet lost">
+            <h2><%= run.race.challenge.bet %> €</h2>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <% end %>
+</div>

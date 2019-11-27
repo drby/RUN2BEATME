@@ -4,7 +4,7 @@
       <%= video_tag "video.mp4", autoplay: :autoplay, loop: :loop, mute: :mute, class: "home_video" %>
       <div>
         <h1 class="home">Run2BeatMe</h1>
-        <p class="home">run faster, win cash</p>
+        <p class="pspecial">run faster, win cash</p>
         <% if user_signed_in? %>
           <p>welcome <%=current_user.username%></p>
           <%= link_to "Start Running", challenges_path, class: "btn-flat btn-home" %>
