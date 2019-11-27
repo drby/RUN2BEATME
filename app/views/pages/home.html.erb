@@ -5,9 +5,14 @@
       <div>
         <h1 class="home">Run2BeatMe</h1>
         <p class="home">run faster, win cash</p>
-        <%= link_to "Start Now", user_session_path, class: "btn-flat home" %>
+        <% if user_signed_in? %>
+          <p>welcome, <%=current_user.name%></p>
+          <%= link_to "Start Now", challenges_path, class: "btn-flat btn-home" %>
+        <% else %>
+          <%= link_to "Log In", user_session_path, class: "btn-flat btn-sign" %>
+          <%= link_to "Sign Up", new_user_registration_path, class: "btn-flat btn-sign btn_sign_left" %>
+        <% end %>
       </div>
     </div>
   </div>
 </div>
-
