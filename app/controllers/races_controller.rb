@@ -1,5 +1,4 @@
 class RacesController < ApplicationController
-
   def index
     @users = User.geocoded # returns users with coordinates
 
