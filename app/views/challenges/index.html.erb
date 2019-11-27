@@ -10,21 +10,10 @@
         <h2><%= challenge.bet %> €</h2>
       </div>
     </div>
-
-    <button class="btn-flat" data-toggle="collapse" data-target="#collapseMap" aria-expanded="false" aria-controls="collapseExample">>
-      Recommanded route
-    </button>
-
-    <div class="collapse c-map-bet" id="collapseMap">
-      <div class="c-map">
-        render "map"
-      </div>
-      <div class="btn-bet">
-        <%= link_to "Bet & Run now !", challenge_runs_path(challenge), method: :post, class: "btn-flat"  %>
-      </div>
+    <div class="btn-flat text-center mt-3" >
+      <%= link_to "Bet & Run now !", challenge_runs_path(challenge), method: :post, class: "btn-flat"  %>
     </div>
-
-
   </div>
+
   <% end %>
 </div>
