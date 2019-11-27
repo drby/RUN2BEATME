@@ -1,4 +1,10 @@
 class RunsController < ApplicationController
+
+  def index
+    @runs = Run.where(user_id: current_user)
+    @runs = @runs.where("state != 0")
+  end
+
   def create
     # on cherche les races qui sont deja crees avec ce challenge
     @races = Race.where(challenge_id: params[:challenge_id])
