@@ -7,7 +7,7 @@ const initMapbox = () => {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v10'
+      style: 'mapbox://styles/tomdarby/ck3h7hmz70sf81cmz42fwcduc'
     });
   }
 };
