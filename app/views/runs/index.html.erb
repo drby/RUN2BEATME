@@ -10,11 +10,21 @@
         <% opponent = run.race.users.select{ |user| user != current_user }.first %>
         <p>Opponent: <%= opponent.username if opponent %></p>
       </div>
-      <div class="card-c-bet">
-        <p> you <%= run.state %>
-          <%= run.race.challenge.bet %> €
-        </p>
-      </div>
+      <% if run.won? %>
+        <div>
+          <p class="text-center">you <%= run.state %></p>
+          <div class="card-c-bet">
+            <h2><%= run.race.challenge.bet %> €</h2>
+          </div>
+        </div>
+      <% else %>
+        <div>
+          <p class="text-center">you <%= run.state %></p>
+          <div class="card-c-bet lost">
+            <h2><%= run.race.challenge.bet %> €</h2>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 

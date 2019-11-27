@@ -27,7 +27,21 @@
 .card-c-bet h2 {
   line-height: 90px;
   font-size: 24px;
+  color: $light-black;
 }
+
+.card-c-bet.lost {
+  background: $light-black;
+  border: 1px solid $light-brown;
+  color: $light-brown;
+}
+
+.card-c-bet.lost h2 {
+  line-height: 90px;
+  font-size: 24px;
+  color: $light-brown;
+}
+
 
 .card-challenge button {
   width: 100%;
