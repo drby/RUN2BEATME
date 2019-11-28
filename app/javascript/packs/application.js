@@ -19,9 +19,11 @@ const refreshId = setInterval( () => {
     counterElement.innerText = `${ 15 - properID} s`
     if (properID >= 15) {
       clearInterval(refreshId);
+      document.getElementById("btn-launch-race").click();
     }
   },
   1000
 );
 }
+
 
