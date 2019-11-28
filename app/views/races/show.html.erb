@@ -16,19 +16,28 @@
   <div class="mt-5">
     <p>Your opponent is...</p>
     <% @runs.each do |run| %>
-    <p><%= run.user.username %></p>
+      <p><%= run.user.username %></p>
 
-   <div class="avatar-opponents">
-      <%= image_tag "default_avatar"%>
-    </div>
+      <div class="avatar-opponents">
+        <%= image_tag "default_avatar"%>
+      </div>
     <% end %>
-
-    <div class="mt-5">
-
+  </div>
+  
+  <div class="my-5">
+    <% if @race.pending? %>
       <h2 id="counter">15 s</h2>
       <h2> remaining until the start...</h2>
+      <%= link_to "Launch the race (temporary)", race_path(@race), method: :patch, class: "btn-flat", "data-toggle" => "modal", "data-target" => "#launched"  %>
+    <% elsif @race.in_progress? %>
+      <%= render 'races/started' %>
+    <% elsif @race.finished? %>
 
-    </div>
+        <%= render 'races/finished' %>
+
+    <% end %>
+  </div>
+
     <div
       id="map"
       style="width: 100%;
@@ -36,8 +45,6 @@
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
     >
-   </div>
- </div>
-
-
-
+    </div>
+  </div>
+</div>
