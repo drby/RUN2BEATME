@@ -14,21 +14,25 @@
   </div>
 
   <div class="mt-5">
-    <p>Your opponent is...</p>
-    <% @runs.each do |run| %>
-      <p><%= run.user.username %></p>
+    <% if @race.runs.count == 2 %>
+      <p>Your opponent is...</p>
+      <% @runs.each do |run| %>
+        <p><%= run.user.username %></p>
 
-      <div class="avatar-opponents">
-        <%= image_tag "default_avatar"%>
-      </div>
+        <div class="avatar-opponents">
+          <%= image_tag "default_avatar"%>
+        </div>
+      <% end %>
+    <% elsif @race.runs.count == 1 %>
+      <p>Waiting for an opponent...</p>
     <% end %>
   </div>
-  
+
   <div class="my-5">
-    <% if @race.pending? %>
+    <% if @race.pending? && @race.runs.count == 2 %>
       <h2 id="counter">15 s</h2>
       <h2> remaining until the start...</h2>
-      <%= link_to "Launch the race (temporary)", race_path(@race), method: :patch, class: "btn-flat", "data-toggle" => "modal", "data-target" => "#launched"  %>
+      <%= link_to "Launch the race (temporary)", race_path(@race), method: :patch, class: "btn-flat", id: "btn-launch-race" %>
     <% elsif @race.in_progress? %>
       <%= render 'races/started' %>
     <% elsif @race.finished? %>
