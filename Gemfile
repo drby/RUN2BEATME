@@ -18,6 +18,7 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'faker'
 gem 'geocoder'
+gem "mapbox-sdk"
 
 group :development do
   gem 'web-console', '>= 3.3.0'
