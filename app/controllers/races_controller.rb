@@ -26,7 +26,7 @@ class RacesController < ApplicationController
       @race.update(progress: 2) # on passe le statut a finished
       @race.runs.first.update(state: 1) # on dit que c'est le 1er user qui a gagne
       @race.runs.first.update(finished_at: DateTime.now) # on lui affecte le temps d'arrive
-      @race.runs[1].update(state: 2) # on dit que c'est le 2eme user qui a perd
+      @race.runs.last.update(state: 2) # on dit que c'est le 2eme user qui a perd
 
       redirect_to race_path(@race)
     end
