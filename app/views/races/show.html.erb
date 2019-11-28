@@ -22,18 +22,18 @@
     <% end %>
   </div>
 
-      <div class="my-5">
-        <% if @race.pending? %>
-          <h2>15 seconds remaining until the start...</h2>
-          <%= link_to "Launch the race (temporary)", race_path(@race), method: :patch, class: "btn-flat", "data-toggle" => "modal", "data-target" => "#launched"  %>
-        <% elsif @race.in_progress? %>
-          <%= render 'races/started' %>
-        <% elsif @race.finished? %>
-          <% @runs.each do |run| %>
-            <%= render 'races/finished', run: run %>
-          <% end %>
-        <% end %>
-      </div>
+  <div class="my-5">
+    <% if @race.pending? %>
+      <h2>15 seconds remaining until the start...</h2>
+      <%= link_to "Launch the race (temporary)", race_path(@race), method: :patch, class: "btn-flat", "data-toggle" => "modal", "data-target" => "#launched"  %>
+    <% elsif @race.in_progress? %>
+      <%= render 'races/started' %>
+    <% elsif @race.finished? %>
+
+        <%= render 'races/finished' %>
+
+    <% end %>
+  </div>
 
     <div
       id="map"
