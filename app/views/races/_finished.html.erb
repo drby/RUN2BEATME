@@ -1,0 +1,16 @@
+<div class="card-race-infos">
+  <div>
+    <h1> The race is finished</h1>
+    <% if @race.runs.select {|run| run.user_id == current_user.id }.first.won? %>
+      <h2>You Win!!</h2>
+      <h3>Congratulations</h3>
+    <% else %>
+      <h2>You loose</h2>
+      <h3>You will do better next time</h3>
+    <% end %>
+  </div>
+  <div class="mt-4">
+    <%= link_to "See all my previous runs", root_path, class: "btn-flat" %>
+  </div>
+</div>
+
