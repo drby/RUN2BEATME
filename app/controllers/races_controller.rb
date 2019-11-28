@@ -6,15 +6,17 @@ class RacesController < ApplicationController
 
   def show
     @race = Race.find(params[:id])
-    # @runs = Run.where(race_id: @race.id)
-    # @runs = @runs.select {|run| run.user_id != current_user.id }
+    @runs = Run.where(race_id: @race.id)
+    @runs = @runs.select { |run| run.user_id != current_user.id }
 
-    @runs = Run.geocoded # returns users with coordinates
+    @runs_pos = Run.geocoded # returns users with coordinates
 
-    @markers = @runs.map do |run|
+    @markers = @runs_pos.map do |run|
       {
-        lat: run.start_latitude,
-        lng: run.start_longitude
+        start_lat: run.start_latitude,
+        start_lng: run.start_longitude,
+        end_lat: run.finish_latitude,
+        end_lng: run.finish_latitude
       }
     end
   end

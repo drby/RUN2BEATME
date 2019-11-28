@@ -2,6 +2,7 @@
   "name": "RUN2BEATME",
   "private": true,
   "dependencies": {
+    "@mapbox/mapbox-gl-draw": "^1.1.2",
     "@rails/webpacker": "^4.2.0",
     "bootstrap": "^4.3.1",
     "jquery": "^3.4.1",
