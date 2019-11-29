@@ -206,3 +206,5 @@ getMatch([`${init_coords.start_lat}, ${init_coords.start_lng};${init_coords.end_
 map.on('draw.create', updateRoute);
 // map.on('draw.update', updateRoute);
 // map.on('draw.delete', removeRoute);
+
+ export { initMapbox };
