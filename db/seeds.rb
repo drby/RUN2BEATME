@@ -14,8 +14,14 @@ puts "Create Users with Faker"
 end
 
 
-puts "Create Challenge with Faker"
-20.times do
-  Challenge.create(category: 0, distance: [1000,2000,5000,10000].sample, bet: [2,5,10,20,50,100].sample)
-end
-
+puts "Create Challenge"
+  Challenge.create(category: 0, distance: 500, bet: 5)
+  Challenge.create(category: 0, distance: 500, bet: 10)
+  Challenge.create(category: 0, distance: 700, bet: 10)
+  Challenge.create(category: 0, distance: 700, bet: 20)
+  Challenge.create(category: 0, distance: 800, bet: 30)
+  Challenge.create(category: 0, distance: 800, bet: 40)
+  Challenge.create(category: 0, distance: 1000, bet: 30)
+  Challenge.create(category: 0, distance: 1000, bet: 40)
+  Challenge.create(category: 0, distance: 1000, bet: 50)
+  Challenge.create(category: 0, distance: 2200, bet: 100)
