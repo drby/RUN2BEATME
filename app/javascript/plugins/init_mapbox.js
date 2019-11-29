@@ -89,7 +89,7 @@ const mapElement = document.getElementById('map');
 mapboxgl.accessToken = 'pk.eyJ1IjoidG9tZGFyYnkiLCJhIjoiY2syZ2FhNm1uMHFsdTNpcGJvZjN2dmRwdiJ9.p_xq3xb9jlOwct9IlLwYqQ';
 var map = new mapboxgl.Map({
   container: 'map', // container id
-  style: 'mapbox://styles/mapbox/streets-v9', //hosted style id
+  style: 'mapbox://styles/tomdarby/ck3h7hmz70sf81cmz42fwcduc', //hosted style id
   center: [-0.565418, 44.8594844], // starting position
   zoom: 13, // starting zoom
   minZoom: 11 // keep it local
