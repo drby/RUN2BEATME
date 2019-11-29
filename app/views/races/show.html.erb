@@ -17,7 +17,7 @@
   <div class="mt-5">
     <% if @race.runs.count == 2 %>
       <p>Your opponent is...</p>
-      <% @runs.each do |run| %>
+      <% @runs_opponents.each do |run| %>
         <p><%= run.user.username %></p>
 
         <div class="avatar-opponents">
@@ -33,7 +33,9 @@
     <% if @race.pending? && @race.runs.count == 2 %>
       <h2 id="counter">15 s</h2>
       <h2> remaining until the start...</h2>
-      <%= link_to "Launch the race (temporary)", race_path(@race), method: :patch, class: "btn-flat", id: "btn-launch-race" %>
+      <%= simple_form_for @race do |f| %>
+        <%= f.button :submit, id: "btn-launch-race" %>
+      <% end %>
     <% elsif @race.in_progress? %>
       <%= render 'races/started' %>
     <% elsif @race.finished? %>
