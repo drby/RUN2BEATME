@@ -1,11 +1,4 @@
 class RacesController < ApplicationController
-  def index
-
-  end
-
-  def update
-    raise
-  end
 
   def show
     @race = Race.find(params[:id])
