@@ -10,7 +10,7 @@ class RacesController < ApplicationController
   def show
     @race = Race.find(params[:id])
     # @runs = Run.where(race_id: @race.id)
-    @run = Run.find(5)
+    @run = Run.find(params[:id])
     @runs = Run.where(race_id: 3)
     # @runs = @runs.select { |run| run.user_id != current_user.id }
     # @runs_pos = Run.geocoded # returns users with coordinates
