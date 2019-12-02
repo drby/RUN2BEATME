@@ -219,16 +219,86 @@ const mapElement = document.getElementById('map');
 //   // }
 // };
 
-
+  const init_coords = JSON.parse(mapElement.dataset.markers)
 
   mapboxgl.accessToken = 'pk.eyJ1IjoidG9tZGFyYnkiLCJhIjoiY2syZ2FhNm1uMHFsdTNpcGJvZjN2dmRwdiJ9.p_xq3xb9jlOwct9IlLwYqQ';
   var map = new mapboxgl.Map({
     container: 'map', // container id
     style: 'mapbox://styles/tomdarby/ck3h7hmz70sf81cmz42fwcduc', //hosted style id
-    center: [-0.565418, 44.8594844], // starting position
+    center: [init_coords.start_lng, init_coords.start_lat], // starting position
     zoom: 13, // starting zoom
     minZoom: 1 // keep it local
   });
+var size = 150;
+var pulsingDot = {
+  width: size,
+  height: size,
+  data: new Uint8Array(size * size * 4),
+  // get rendering context for the map canvas when layer is added to the map
+  onAdd: function() {
+    var canvas = document.createElement("canvas");
+    canvas.width = this.width;
+    canvas.height = this.height;
+    this.context = canvas.getContext("2d");
+  },
+  // called once before every frame where the icon will be used
+  render: function() {
+    var duration = 2000;
+    var t = (performance.now() % duration) / duration;
+    var radius = (size / 2) * 0.3;
+    var outerRadius = (size / 2) * 0.7 * t + radius;
+    var context = this.context;
+    // draw outer circle
+    context.clearRect(0, 0, this.width, this.height);
+    context.beginPath();
+    context.arc(this.width / 2, this.height / 2, outerRadius, 0, Math.PI * 2);
+    context.fillStyle = "rgba(355, 80, 80," + (1 - t) + ")";
+    context.fill();
+    // draw inner circle
+    context.beginPath();
+    context.arc(this.width / 2, this.height / 2, radius, 0, Math.PI * 2);
+    context.fillStyle = "rgba(355, 80, 80, 0.8)";
+    context.strokeStyle = "#CC2936";
+    context.lineWidth = 2 + 4 * (1 - t);
+    context.fill();
+    context.stroke();
+    // update this image's data with data from the canvas
+    this.data = context.getImageData(0, 0, this.width, this.height).data;
+    // continuously repaint the map, resulting in the smooth animation of the dot
+    map.triggerRepaint();
+    // return `true` to let the map know that the image was updated
+    return true;
+  }
+};
+map.on("load", function() {
+  map.addImage("pulsing-dot", pulsingDot, { pixelRatio: 2 });
+  map.addLayer({
+    id: "points",
+    type: "symbol",
+    source: {
+      type: "geojson",
+      data: {
+        type: "FeatureCollection",
+        features: [
+          {
+            type: "Feature",
+            geometry: {
+              type: "Point",
+              coordinates: [init_coords.start_lng, init_coords.start_lat]
+            }
+          }
+        ]
+      }
+    },
+    layout: {
+      "icon-image": "pulsing-dot"
+    }
+  });
+  getMatch([`${init_coords.start_lng}, ${init_coords.start_lat};${init_coords.end_lng}, ${init_coords.end_lat}`]);
+  console.log([`${init_coords.start_lng}, ${init_coords.start_lat};${init_coords.end_lng}, ${init_coords.end_lat}`]);
+
+  map.on('draw.create', updateRoute);
+});
   //
   var draw = new MapboxDraw({
     displayControlsDefault: false,
@@ -333,12 +403,11 @@ const mapElement = document.getElementById('map');
     };
   }
   // getMatch ([`${-0.5714261481728897},${44.862692782270926} ; ${-0.5584657142138383}, ${44.893909504056664}`])
-  const init_coords = JSON.parse(mapElement.dataset.markers)
-  getMatch([`${init_coords.start_lng}, ${init_coords.start_lat};${init_coords.end_lng}, ${init_coords.end_lat}`]);
-  console.log([`${init_coords.start_lng}, ${init_coords.start_lat};${init_coords.end_lng}, ${init_coords.end_lat}`]);
+
+
   // add the draw tool to the map
   // map.addControl(draw);
-  map.on('draw.create', updateRoute);
+
   // map.on('draw.update', updateRoute);
   // map.on('draw.delete', removeRoute);
 }

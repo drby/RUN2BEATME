@@ -7,7 +7,7 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 72px;
+  width: 52px;
   border-radius: 50%;
 }
 
@@ -20,9 +20,22 @@
   font-weight: bold;
   margin: 0;
   font-size: medium;
-  margin-left: 124px;
+  margin-left: 170px;
 }
 
 .nav-item a {
   color: $yellow;
+}
+
+#yannou {
+  background-color: $yellow;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  border-color: $yellow;
+}
+
+.btn-primary {
+  border-color: $yellow;
 }

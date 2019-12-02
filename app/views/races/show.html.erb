@@ -20,7 +20,7 @@
         <p><%= run.user.username %></p>
 
         <div class="avatar-opponents">
-          <%= image_tag "default_avatar.jpg"%>
+          <%= image_tag run.user.photo%>
         </div>
       <% end %>
     <% elsif @race.runs.count == 1 %>
