@@ -9,14 +9,31 @@ class RacesController < ApplicationController
     # @runs_pos = Run.geocoded # returns users with coordinates
 
     @run = @runs.select { |run| run.user_id == current_user.id }.first
+    direction = "N"
+    case direction
+      when "N"
+        teta = 90
+      when "E"
+        teta = 0
+      when "S"
+        teta = 270
+      when "W"
+        teta = 180
+    end
+    distance = @race.challenge.distance / 100
+    # @run.update(finish_lon )
+
     @markers = {
       start_lat: @run.start_latitude,
       #start_lat: 44.9052793,
       start_lng: @run.start_longitude,
       #start_lng: -0.5057087,
-      end_lat: @run.finish_latitude,
-      end_lng: @run.finish_longitude
+      end_lat: distance * 360 / (2 * 6371 * Math::PI) * Math.sin(teta * Math::PI / 180 ) + @run.start_latitude.to_f,
+      end_lng: distance * 360 / (2 * 6371 * Math::PI) * Math.cos(teta * Math::PI / 180 ) + @run.start_longitude.to_f
+
     }
+
+    # @my_pos = [@run.start_latitude, @run.start_longitude]
   end
 
   def update
