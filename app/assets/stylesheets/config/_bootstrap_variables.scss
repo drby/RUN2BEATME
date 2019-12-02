@@ -23,3 +23,23 @@ $border-radius-lg: 2px;
 $border-radius-sm: 2px;
 
 // Override other variables below!
+.modal-content {
+    position: fixed;
+    top: 0px;
+    left: 0;
+    z-index: 1051;
+    display: none;
+    width: 100vh;
+    height: 100vh;
+    overflow: hidden;
+    outline: 0;
+}
+
+
+body.modal-open .supreme-container{
+    -webkit-filter: blur(1px);
+    -moz-filter: blur(1px);
+    -o-filter: blur(1px);
+    -ms-filter: blur(1px);
+    filter: blur(1px);
+}

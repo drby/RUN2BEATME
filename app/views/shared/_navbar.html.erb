@@ -1,7 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <%= link_to "#", class: "navbar-brand" do %>
     <%= image_tag(current_user.photo) %>
-    <% end %>
+  <% end %>
   <p class="nav-wallet">
     <% if user_signed_in? %>
       <%= current_user.wallet %>
@@ -10,26 +10,27 @@
       <i class="fas fa-coins fa-2x"></i> 0
   <% end %>
   </p>
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+    M
   </button>
-
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <% if user_signed_in? %>
-        <li class="nav-item dropdown">
-            <%= link_to "View challenges", challenges_path, class: "dropdown-item" %>
-            <%= link_to "Add money", "#", class: "dropdown-item" %>
-            <%= link_to "Edit profil", edit_user_registration_path, class: "dropdown-item" %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-        </li>
-      <% else %>
-        <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-        </li>
-      <% end %>
-    </ul>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Menu</h4>
+        </div>
+        <div class="modal-body">
+          <%= link_to "View challenges", challenges_path, class: "dropdown-item" %>
+          <%= link_to "Add money", "#", class: "dropdown-item" %>
+          <%= link_to "Edit profil", edit_user_registration_path, class: "dropdown-item" %>
+          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
   </div>
 </div>
