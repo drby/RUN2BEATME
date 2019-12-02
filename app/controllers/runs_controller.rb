@@ -1,5 +1,4 @@
 class RunsController < ApplicationController
-
   def index
     @runs = Run.where(user_id: current_user)
     @runs = @runs.where("state != 0")
@@ -10,6 +9,10 @@ class RunsController < ApplicationController
     @races = Race.where(challenge_id: params[:challenge_id])
     # on cherche les races qui sont deja crees avec ce challenge et deja pleines
     @races_full = @races.select { |race| race.users.count == 2 }
+    # on cherche les races deja crees avec ce challenge et pas deja pleines
+    @races_not_full = @races.select { |race| race.users.count < 2 }
+    # on determine la premiere race qui n'est pas deja pleine
+    @race = @races_not_full.first
     # si aucune race deja creee
     # ou si race deja cree mais deja remplie en nb de participants
     # alors on doit creer une nouvelle race
@@ -22,12 +25,11 @@ class RunsController < ApplicationController
       @run.user_id = current_user.id
       @run.save
 
-
     # sinon on cree le run et on l'ajoute au premier race non plein
-    else
+    # mais seulement si le current_user n'est pas deja inscrit a ce run
+
+    elsif current_user.runs.select { |run| run.race_id == @race.id } == []
       @run = Run.new
-      @races_not_full = @races.select { |race| race.users.count < 2 }
-      @race = @races_not_full.first
       @run.race_id = @race.id
       @run.user_id = current_user.id
       @run.save
