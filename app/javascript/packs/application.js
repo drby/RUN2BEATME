@@ -34,7 +34,6 @@ if (counterElement) {
         form.prepend(input1)
         form.prepend(input2)
 
-        console.log(form);
         form.submit();
       });
 
@@ -43,7 +42,37 @@ if (counterElement) {
     1000
   );
   }
-}
+};
+
+// const current_position = navigator.geolocation.getCurrentPosition((pos) => {
+//   const current_lat = pos.coords.latitude;
+//   const current_lng = pos.coords.longitude;
+//   console.log(current_lat);
+//   console.log(current_lng);
+// });
+
+const rebip = setInterval( () => {
+ navigator.geolocation.getCurrentPosition((data) =>  {
+    const lat = data.coords.latitude;
+    const long = data.coords.longitude;
+    const input1 = document.createElement("input");
+    const input2 = document.createElement("input");
+    input1.setAttribute("name", "lat");
+    input1.setAttribute("value", lat);
+    input1.setAttribute("type", "hidden");
+    input2.setAttribute("name", "long");
+    input2.setAttribute("value", long);
+    input2.setAttribute("type", "hidden");
+    const form = document.getElementById("race-finished")
+    form.prepend(input1)
+    form.prepend(input2)
+
+
+    form.submit();
+  });
+},
+ 100000
+ );
 
 
 
