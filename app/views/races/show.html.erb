@@ -28,19 +28,17 @@
     <% end %>
   </div>
 
-  <div class="my-5">
+  <div class="my-5" id="race">
     <% if @race.pending? && @race.runs.count == 2 %>
       <h2 id="counter">15 s</h2>
       <h2> remaining until the start...</h2>
-      <%= simple_form_for @race do |f| %>
+      <%= simple_form_for(@race, remote: true) do |f| %>
         <%= f.button :submit, id: "btn-launch-race" %>
       <% end %>
     <% elsif @race.in_progress? %>
       <%= render 'races/started' %>
     <% elsif @race.finished? %>
-
         <%= render 'races/finished' %>
-
     <% end %>
   </div>
 

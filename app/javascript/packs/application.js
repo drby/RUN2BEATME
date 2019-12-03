@@ -35,7 +35,8 @@ if (counterElement) {
         form.prepend(input2)
 
         console.log(form);
-        form.submit();
+        // form.submit();
+        Rails.fire(form, 'submit');
       });
 
       }
