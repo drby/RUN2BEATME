@@ -6,31 +6,31 @@
     <% if user_signed_in? %>
       <%= current_user.wallet %>
       <i class="fas fa-coins fa-lg"></i>
-      <% else %>
-      <i class="fas fa-coins fa-lg" id="penis"></i> 0
-  <% end %>
+    <% else %>
+        <i class="fas fa-coins fa-lg"></i> 0
+    <% end %>
   </p>
   <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" id="yannou">
-    <i class="fas fa-bars" id="penis"></i>
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" id="burger-menu">
+    <i class="fas fa-bars"></i>
   </button>
   <!-- Modal -->
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Menu</h4>
-        </div>
-        <div class="modal-body">
-          <%= link_to "Challenges", challenges_path, class: "dropdown-item" %>
-          <%= link_to "My runs", runs_path, class: "dropdown-item" %>
-          <%= link_to "Add money", "#", class: "dropdown-item" %>
-          <%= link_to "Edit profil", edit_user_registration_path, class: "dropdown-item" %>
-          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-        </div>
-        <div class="modal-footer">
-        </div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Menu</h4>
+      </div>
+      <div class="modal-body">
+        <%= link_to "Challenges", challenges_path, class: "dropdown-item" %>
+        <%= link_to "My runs", runs_path, class: "dropdown-item" %>
+        <%= link_to "Add money", "#", class: "dropdown-item" %>
+        <%= link_to "Edit profil", edit_user_registration_path, class: "dropdown-item" %>
+        <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+      </div>
+      <div class="modal-footer">
       </div>
     </div>
   </div>

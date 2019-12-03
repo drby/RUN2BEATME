@@ -23,23 +23,102 @@ $border-radius-lg: 2px;
 $border-radius-sm: 2px;
 
 // Override other variables below!
-.modal-content {
-    position: fixed;
-    top: 0px;
-    left: 0;
-    z-index: 1051;
-    display: none;
-    width: 100vh;
-    height: 100vh;
-    overflow: hidden;
-    outline: 0;
+// body.modal-open > :not(.modal) {
+//     -webkit-filter: blur(1px);
+// }
+
+body.modal-fade {
+  -webkit-filter: blur(10px);
+  -moz-filter: blur(10px);
+  -o-filter: blur(10px);
+  -ms-filter: blur(10px);
+  filter: blur(10px);
 }
 
+.modal-content {
+    // opacity: 50% !important;
+    background-color: transparent !important;
+    position: relative;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    width: 100vh;
+    height: 100vh;
+    pointer-events: auto;
+    // background-clip: padding-box;
+    // border: 1px solid rgba(32, 32, 32, 0.2);
+    // border-radius: 2px;
+    // outline: 0;
+}
 
-body.modal-open .supreme-container{
-    -webkit-filter: blur(1px);
-    -moz-filter: blur(1px);
-    -o-filter: blur(1px);
-    -ms-filter: blur(1px);
-    filter: blur(1px);
+.dropdown-item {
+  display: block;
+  color: white !important;
+  font-size: 29px;
+  width: 100%;
+  padding: 1.25rem 3.5rem;
+  clear: both;
+  font-weight: 400;
+  color: white;
+  text-align: center;
+  white-space: nowrap;
+  // background-color: transparent;
+  border: 0;
+}
+
+.modal-title {
+  margin-bottom: 0;
+  line-height: 1.5;
+  color: white;
+  text-align: center !important;
+  font-size: 30px !important;
+}
+
+button.close {
+margin: 0 !important;
+}
+
+.modal-header {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: start;
+  align-items: flex-start;
+  -webkit-box-pack: justify;
+  justify-content: center !important;
+  padding: 1rem 1rem;
+  border-bottom: 0 !important;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+}
+
+// .fade-scale {
+//   transform: scale(0);
+//   opacity: 0;
+//   -webkit-transition: all .25s linear;
+//   -o-transition: all .25s linear;
+//   transition: all .25s linear;
+// }
+
+// .fade-scale.in {
+//   opacity: 1;
+//   transform: scale(1);
+// }
+
+.modal-body {
+  text-align: center !important;
+}
+
+.modal-footer {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+    padding: 1rem;
+    border-top: 0 !important;
+    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 2px;
 }
