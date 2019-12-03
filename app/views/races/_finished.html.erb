@@ -1,7 +1,7 @@
 <div class="card-race-infos">
   <div>
     <h1> The race is finished</h1>
-    <% if @race.runs.select {|run| run.user_id == current_user.id }.first.won? %>
+    <% if race.runs.select {|run| run.user_id == current_user.id }.first.won? %>
       <h2>You Win!!</h2>
       <h3>Congratulations</h3>
     <% else %>
