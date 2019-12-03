@@ -30,9 +30,7 @@ class RacesController < ApplicationController
       #start_lng: -0.5057087,
       end_lat: distance * 360 / (2 * 6371 * Math::PI) * Math.sin(teta * Math::PI / 180 ) + @run.start_latitude.to_f,
       end_lng: distance * 360 / (2 * 6371 * Math::PI) * Math.cos(teta * Math::PI / 180 ) + @run.start_longitude.to_f
-
     }
-
     # @my_pos = [@run.start_latitude, @run.start_longitude]
   end
 
@@ -40,7 +38,7 @@ class RacesController < ApplicationController
     @race = Race.find(params[:id])
     @challenge = @race.challenge
 
-    if @race.pending? # si le bouton start est clique et que la race est a pending
+    if @race.pending? # si le bouton start est clique et que la race démarre
       @race.update(progress: 1, start_at: DateTime.now) # alors on update a in_progress et on lui affecte le temps du départ
       @race.runs.first.update(start_latitude: params[:lat], start_longitude: params[:long])
       @race.runs.last.update(start_latitude: params[:lat], start_longitude: params[:long])

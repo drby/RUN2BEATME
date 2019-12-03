@@ -38,7 +38,6 @@ class RunsController < ApplicationController
         partial: "races/opponents",
         locals: { runs_opponents: Run.where(id: @run.id),
         race: @race }
-
       ),
      })
     end

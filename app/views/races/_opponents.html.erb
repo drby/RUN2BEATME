@@ -8,8 +8,9 @@
 <% end %>
 
 <div class="my-5" id="race">
+  <% if race.pending? %>
   <%= render 'races/counter', race: race %>
-  <% if race.in_progress? %>
+  <% elsif race.in_progress? %>
     <%= render 'races/started', race: race %>
   <% elsif race.finished? %>
       <%= render 'races/finished', race: race %>
