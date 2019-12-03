@@ -27,8 +27,8 @@ class RacesController < ApplicationController
       start_lng: @run.start_longitude,
       end_lat: distance * 360 / (2 * 6371 * Math::PI) * Math.sin(teta * Math::PI / 180) + @run.start_latitude.to_f,
       end_lng: distance * 360 / (2 * 6371 * Math::PI) * Math.cos(teta * Math::PI / 180) + @run.start_longitude.to_f
-
     }
+
 
     # @my_pos = [@run.start_latitude, @run.start_longitude]
   end
