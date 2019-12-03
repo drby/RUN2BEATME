@@ -46,7 +46,7 @@ class RacesController < ApplicationController
       @race.runs.last.update(start_latitude: params[:lat], start_longitude: params[:long])
 
       redirect_to race_path(@race)
-    elsif @race.in_progress? # si le bouton finish est clique et que la race est a in_progress
+    elsif @race.in_progress? && params[:finished] == "true" # si le bouton finish est clique et que la race est a in_progress
       @race.update(progress: 2) # on passe le statut a finished
 
       @race.runs.first.update(state: 1) # on dit que c'est le 1er user qui a gagne
@@ -55,6 +55,7 @@ class RacesController < ApplicationController
       @race.runs.first.user.update(wallet: (w1 + @challenge.bet)) # on lui credite son compte le temps d'arrive
 
       @race.runs.last.update(state: 2) # on dit que c'est le 2eme user qui a perdu
+      @race.runs.last.update(finished_at: DateTime.now) # on lui affecte le temps d'arrive
       w2 = @race.runs.last.user.wallet
       @race.runs.last.user.update(wallet: (w2 - @challenge.bet)) # on lui debite son compte le temps d'arrive
 
