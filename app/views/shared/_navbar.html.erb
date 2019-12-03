@@ -23,7 +23,8 @@
           <h4 class="modal-title" id="myModalLabel">Menu</h4>
         </div>
         <div class="modal-body">
-          <%= link_to "View challenges", challenges_path, class: "dropdown-item" %>
+          <%= link_to "Challenges", challenges_path, class: "dropdown-item" %>
+          <%= link_to "My runs", runs_path, class: "dropdown-item" %>
           <%= link_to "Add money", "#", class: "dropdown-item" %>
           <%= link_to "Edit profil", edit_user_registration_path, class: "dropdown-item" %>
           <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
