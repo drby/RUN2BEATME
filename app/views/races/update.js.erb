@@ -3,10 +3,10 @@ function launchRace(raceHTML) {
   race.innerHTML = raceHTML;
 };
 
-
 <% if @race.in_progress? %>
+  document.location.reload(true);
   launchRace('<%= j render "races/started", race: @race %>');
 <% elsif @race.finished? %>
-  launchRace('<%= j render "races/finished", race: @race %>');
+  // launchRace('<%= j render "races/finished", race: @race %>');
 <% end %>
 

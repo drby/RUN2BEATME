@@ -1,14 +1,14 @@
 <div class="container">
   <h1>Your previous runs</h1>
-  <% @runs.each do |run| %>
+  <% @runs.sort_by { |run| run.finished_at }.reverse!.each do |run| %>
   <div class="card-challenge">
     <div class="card-c-infos">
       <div class="card-c-details">
         <p>Run category: <%= run.race.challenge.category %></p>
         <h1>Run distance: <%= run.race.challenge.distance / 100 %> km</h1>
-        <p>Run date: <%= run.finished_at %></p>
+        <p><u>Run date:</u> <%= run.finished_at.to_formatted_s(:long_ordinal) %></p>
         <% opponent = run.race.users.select{ |user| user != current_user }.first %>
-        <p>Opponent: <%= opponent.username if opponent %></p>
+        <p><u>Opponent:</u> <%= opponent.username if opponent %></p>
       </div>
       <% if run.won? %>
         <div>

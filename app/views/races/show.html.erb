@@ -28,17 +28,16 @@
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
     >
     </div>
-  </div>
-</div>
 
 <% content_for :after_js do %>
   <script>
     App['race_<%= @race.id %>'] = App.cable.subscriptions.create(
       { channel: 'RacesChannel', race_id: <%= @race.id %> },
       { received: (data) => {
+      console.log(data);
        var opponents = document.getElementById("find-opponents");
        console.log(data.race_partial);
-       opponents.innerHTML = data.race_partial;  }
+       opponents.innerHTML = data.race_partial; }
     })
   </script>
 <% end %>
