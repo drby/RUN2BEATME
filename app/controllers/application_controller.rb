@@ -29,5 +29,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def default_url_options
+    { host: ENV["http://www.run2beat.me/"] || "localhost:3000" }
+  end
+
 end
 
