@@ -229,76 +229,76 @@ const mapElement = document.getElementById('map');
     zoom: 13, // starting zoom
     minZoom: 1 // keep it local
   });
-var size = 150;
-var pulsingDot = {
-  width: size,
-  height: size,
-  data: new Uint8Array(size * size * 4),
-  // get rendering context for the map canvas when layer is added to the map
-  onAdd: function() {
-    var canvas = document.createElement("canvas");
-    canvas.width = this.width;
-    canvas.height = this.height;
-    this.context = canvas.getContext("2d");
-  },
-  // called once before every frame where the icon will be used
-  render: function() {
-    var duration = 2000;
-    var t = (performance.now() % duration) / duration;
-    var radius = (size / 2) * 0.3;
-    var outerRadius = (size / 2) * 0.7 * t + radius;
-    var context = this.context;
-    // draw outer circle
-    context.clearRect(0, 0, this.width, this.height);
-    context.beginPath();
-    context.arc(this.width / 2, this.height / 2, outerRadius, 0, Math.PI * 2);
-    context.fillStyle = "rgba(355, 80, 80," + (1 - t) + ")";
-    context.fill();
-    // draw inner circle
-    context.beginPath();
-    context.arc(this.width / 2, this.height / 2, radius, 0, Math.PI * 2);
-    context.fillStyle = "rgba(355, 80, 80, 0.8)";
-    context.strokeStyle = "#CC2936";
-    context.lineWidth = 2 + 4 * (1 - t);
-    context.fill();
-    context.stroke();
-    // update this image's data with data from the canvas
-    this.data = context.getImageData(0, 0, this.width, this.height).data;
-    // continuously repaint the map, resulting in the smooth animation of the dot
-    map.triggerRepaint();
-    // return `true` to let the map know that the image was updated
-    return true;
-  }
-};
-map.on("load", function() {
-  map.addImage("pulsing-dot", pulsingDot, { pixelRatio: 2 });
-  map.addLayer({
-    id: "points",
-    type: "symbol",
-    source: {
-      type: "geojson",
-      data: {
-        type: "FeatureCollection",
-        features: [
-          {
-            type: "Feature",
-            geometry: {
-              type: "Point",
-              coordinates: [init_coords.start_lng, init_coords.start_lat]
-            }
-          }
-        ]
-      }
+  var size = 150;
+  var pulsingDot = {
+    width: size,
+    height: size,
+    data: new Uint8Array(size * size * 4),
+    // get rendering context for the map canvas when layer is added to the map
+    onAdd: function() {
+      var canvas = document.createElement("canvas");
+      canvas.width = this.width;
+      canvas.height = this.height;
+      this.context = canvas.getContext("2d");
     },
-    layout: {
-      "icon-image": "pulsing-dot"
+    // called once before every frame where the icon will be used
+    render: function() {
+      var duration = 2000;
+      var t = (performance.now() % duration) / duration;
+      var radius = (size / 2) * 0.3;
+      var outerRadius = (size / 2) * 0.7 * t + radius;
+      var context = this.context;
+      // draw outer circle
+      context.clearRect(0, 0, this.width, this.height);
+      context.beginPath();
+      context.arc(this.width / 2, this.height / 2, outerRadius, 0, Math.PI * 2);
+      context.fillStyle = "rgba(355, 80, 80," + (1 - t) + ")";
+      context.fill();
+      // draw inner circle
+      context.beginPath();
+      context.arc(this.width / 2, this.height / 2, radius, 0, Math.PI * 2);
+      context.fillStyle = "rgba(355, 80, 80, 0.8)";
+      context.strokeStyle = "#CC2936";
+      context.lineWidth = 2 + 4 * (1 - t);
+      context.fill();
+      context.stroke();
+      // update this image's data with data from the canvas
+      this.data = context.getImageData(0, 0, this.width, this.height).data;
+      // continuously repaint the map, resulting in the smooth animation of the dot
+      map.triggerRepaint();
+      // return `true` to let the map know that the image was updated
+      return true;
     }
-  });
-  getMatch([`${init_coords.start_lng}, ${init_coords.start_lat};${init_coords.end_lng}, ${init_coords.end_lat}`]);
-  console.log([`${init_coords.start_lng}, ${init_coords.start_lat};${init_coords.end_lng}, ${init_coords.end_lat}`]);
+  };
+  map.on("load", function() {
+    // map.addImage("pulsing-dot", pulsingDot, { pixelRatio: 2 });
+    // map.addLayer({
+    //   id: "points",
+    //   type: "symbol",
+    //   source: {
+    //     type: "geojson",
+    //     data: {
+    //       type: "FeatureCollection",
+    //       features: [
+    //         {
+    //           type: "Feature",
+    //           geometry: {
+    //             type: "Point",
+    //             coordinates: [init_coords.start_lng, init_coords.start_lat]
+    //           }
+    //         }
+    //       ]
+    //     }
+    //   },
+    //   layout: {
+    //     "icon-image": "pulsing-dot"
+    //   }
+    // });
+    getMatch([`${init_coords.start_lng}, ${init_coords.start_lat};${init_coords.end_lng}, ${init_coords.end_lat}`]);
+    console.log([`${init_coords.start_lng}, ${init_coords.start_lat};${init_coords.end_lng}, ${init_coords.end_lat}`]);
 
-  map.on('draw.create', updateRoute);
-});
+    map.on('draw.create', updateRoute);
+  });
   //
   var draw = new MapboxDraw({
     displayControlsDefault: false,
@@ -410,6 +410,71 @@ map.on("load", function() {
 
   // map.on('draw.update', updateRoute);
   // map.on('draw.delete', removeRoute);
+
+
+
+
+
+const fakeCurrentPosition = () => {
+  map.addImage("pulsing-dot", pulsingDot, { pixelRatio: 2 });
+
+
+  const checkReload2 = (() => {
+    let counter = 0;
+    return () => {
+      counter++;
+      return counter;
+    };
+  })();
+  {
+  const refreshId = setInterval( () => {
+    const properID = checkReload2();
+
+    const coords = map.getSource("route")["_data"].geometry.coordinates
+
+    map.addLayer({
+        id: `points-${properID}`,
+        type: "symbol",
+        source: {
+          type: "geojson",
+          data: {
+            type: "FeatureCollection",
+            features: [
+              {
+                type: "Feature",
+                geometry: {
+                  type: "Point",
+                  coordinates: coords[properID]
+                }
+              }
+            ]
+          }
+        },
+        layout: {
+          "icon-image": "pulsing-dot",
+          'visibility': 'visible'
+        }
+      });
+
+      if (properID > 0) {
+        const pos = map.setLayoutProperty(`points-${properID - 1}`, "visibility", "none");
+      }
+
+
+
+      if (properID >= coords.length - 1) {
+        clearInterval(refreshId);
+      }
+    },
+    1000
+  );
+  }
+};
+
+
+fakeCurrentPosition()
+
+
 }
 
 
