@@ -27,7 +27,7 @@
   color: $yellow;
 }
 
-#yannou {
+#burger-menu {
   background-color: $yellow;
   text-decoration: none;
 }
@@ -38,4 +38,9 @@
 
 .btn-primary {
   border-color: $yellow;
+}
+
+.fa-bars:before {
+  content: "\f0c9";
+  color: $black;
 }
