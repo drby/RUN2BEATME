@@ -51,7 +51,7 @@ Rails.application.configure do
   config.action_cable.allowed_request_origins = [ "http://www.run2beat.me", "https://www.run2beat.me" ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  # config.force_ssl = true
+  config.force_ssl = true
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
