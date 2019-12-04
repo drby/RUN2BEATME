@@ -24,6 +24,7 @@ class RunsController < ApplicationController
       @run.race_id = @race.id
       @run.user_id = current_user.id
       @run.save
+      # recuperer ici la lat et la long pour les injecter dans le run des maintenant
 
     # sinon on cree le run et on l'ajoute au premier race non plein
     # mais seulement si le current_user n'est pas deja inscrit a ce run
@@ -33,6 +34,13 @@ class RunsController < ApplicationController
       @run.race_id = @race.id
       @run.user_id = current_user.id
       @run.save
+      ActionCable.server.broadcast("race_#{@race.id}", {
+       race_partial: ApplicationController.renderer.render(
+        partial: "races/opponents",
+        locals: { runs_opponents: Run.where(id: @run.id),
+        race: @race }
+      ),
+     })
     end
     redirect_to race_path(@race)
   end
