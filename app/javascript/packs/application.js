@@ -4,6 +4,9 @@ import 'mapbox-gl/dist/mapbox-gl.css'; // <-- you need to uncomment the styleshe
 import { initMapbox } from '../plugins/init_mapbox';
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 98de11134dd4a001f894cda9a2f51e47f0402586
 const searchCounter = setInterval( () => {
   const counterElement = document.querySelector("#counter");
   if (counterElement) {
@@ -57,6 +60,7 @@ const countdown = () => {
       1000
     );
     }
+<<<<<<< HEAD
 =======
 const counterElement = document.querySelector("#counter");
 if (counterElement) {
@@ -97,6 +101,8 @@ if (counterElement) {
     1000
   );
 >>>>>>> d68c0b871724ff35ff4653288b122b27e800cf86
+=======
+>>>>>>> 98de11134dd4a001f894cda9a2f51e47f0402586
   }
 };
 
@@ -119,7 +125,6 @@ if (counterElement) {
 const finshRace = function finishRAce() {
 
 }
-
 
 const raceFinished = setInterval( () => {
  navigator.geolocation.getCurrentPosition((data) =>  {
@@ -150,6 +155,5 @@ const raceFinished = setInterval( () => {
 },
  1000
  );
-
 
 initMapbox();

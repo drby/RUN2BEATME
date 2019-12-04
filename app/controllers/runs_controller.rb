@@ -24,6 +24,7 @@ class RunsController < ApplicationController
       @run.race_id = @race.id
       @run.user_id = current_user.id
       @run.save
+      # recuperer ici la lat et la long pour les injecter dans le run des maintenant
 
     # sinon on cree le run et on l'ajoute au premier race non plein
     # mais seulement si le current_user n'est pas deja inscrit a ce run
