@@ -12,37 +12,13 @@
     </div>
   </div>
 
-
-  <div class="mt-5">
+<div class="mt-5" id="find-opponents">
     <% if @race.runs.count == 2 %>
-      <p>Your opponent is...</p>
-      <% @runs_opponents.each do |run| %>
-        <p><%= run.user.username %></p>
-
-        <div class="avatar-opponents">
-          <%= image_tag run.user.photo%>
-        </div>
-      <% end %>
+      <%= render 'races/opponents', runs_opponents: @runs_opponents, race: @race %>
     <% elsif @race.runs.count == 1 %>
-      <p>Waiting for an opponent...</p>
+      <%= render 'races/waiting', race: @race %>
     <% end %>
-  </div>
-
-  <div class="my-5">
-    <% if @race.pending? && @race.runs.count == 2 %>
-      <h2 id="counter">15 s</h2>
-      <h2> remaining until the start...</h2>
-      <%= simple_form_for @race do |f| %>
-        <%= f.button :submit, id: "btn-launch-race" %>
-      <% end %>
-    <% elsif @race.in_progress? %>
-      <%= render 'races/started' %>
-    <% elsif @race.finished? %>
-
-        <%= render 'races/finished' %>
-
-    <% end %>
-  </div>
+</div>
 
     <div
       id="map"
@@ -54,3 +30,15 @@
     </div>
   </div>
 </div>
+
+<% content_for :after_js do %>
+  <script>
+    App['race_<%= @race.id %>'] = App.cable.subscriptions.create(
+      { channel: 'RacesChannel', race_id: <%= @race.id %> },
+      { received: (data) => {
+       var opponents = document.getElementById("find-opponents");
+       console.log(data.race_partial);
+       opponents.innerHTML = data.race_partial;  }
+    })
+  </script>
+<% end %>
