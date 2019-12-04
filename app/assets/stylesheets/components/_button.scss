@@ -11,7 +11,9 @@
   font-size: 28px;
   border-radius: 30px;
   letter-spacing: 2px;
-  text-decoration: none;
+  text-decoration: none !important;
+  outline: none !important;
+  border: none !important;
 }
 
 
@@ -29,4 +31,9 @@
 
 #btn-launch-race {
   visibility: hidden;
+}
+
+.btn.btn-primary.btn-lg {
+  outline: none !important;
+  border: none !important;
 }
