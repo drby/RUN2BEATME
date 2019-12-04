@@ -41,8 +41,6 @@ class RacesController < ApplicationController
       @race.update(progress: 1, start_at: DateTime.now) # alors on update a in_progress et on lui affecte le temps du départ
       @race.runs.first.update(start_latitude: params[:lat], start_longitude: params[:long])
       @race.runs.last.update(start_latitude: params[:lat], start_longitude: params[:long])
-
-      redirect_to race_path(@race)
     elsif @race.in_progress? && params[:finished] == "true" # si le bouton finish est clique et que la race est a in_progress
       @race.update(progress: 2) # on passe le statut a finished
 
@@ -55,8 +53,10 @@ class RacesController < ApplicationController
       @race.runs.last.update(finished_at: DateTime.now) # on lui affecte le temps d'arrive
       w2 = @race.runs.last.user.wallet
       @race.runs.last.user.update(wallet: (w2 - @challenge.bet)) # on lui debite son compte le temps d'arrive
-
-      redirect_to race_path(@race)
+    end
+    respond_to do |format|
+      # format.html { redirect_to race_path(@race) }
+      format.js # <-- will render `app/views/races/update.js.erb`
     end
   end
 end

@@ -3,9 +3,10 @@
     <h1>The race is now in progress !</h1>
   </div>
   <div class="mt-4">
-    <%= simple_form_for @race do |f| %>
-        <%= f.button :submit, id: "race-finished" %>
-      <% end %>
+    <%#= simple_form_for @race do |f| %>
+        <%#= f.button :submit, id: "race-finished" %>
+      <%# end %>
+    <%= link_to "Race finished!", race_path(@race, finished: true), method: :patch, remote: true, class: "btn-flat" %>
   </div>
 </div>
 
