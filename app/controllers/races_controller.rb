@@ -25,26 +25,9 @@ class RacesController < ApplicationController
     @markers = {
       start_lat: @run.start_latitude,
       start_lng: @run.start_longitude,
-<<<<<<< HEAD
-<<<<<<< HEAD
-      #start_lng: -0.5057087,
-      end_lat: distance * 360 / (2 * 6371 * Math::PI) * Math.sin(teta * Math::PI / 180 ) + @run.start_latitude.to_f,
-      end_lng: distance * 360 / (2 * 6371 * Math::PI) * Math.cos(teta * Math::PI / 180 ) + @run.start_longitude.to_f
-    }
-=======
       end_lat: distance * 360 / (2 * 6371 * Math::PI) * Math.sin(teta * Math::PI / 180) + @run.start_latitude.to_f,
       end_lng: distance * 360 / (2 * 6371 * Math::PI) * Math.cos(teta * Math::PI / 180) + @run.start_longitude.to_f
     }
-
-
->>>>>>> d68c0b871724ff35ff4653288b122b27e800cf86
-    # @my_pos = [@run.start_latitude, @run.start_longitude]
-=======
-
-      end_lat: distance * 360 / (2 * 6371 * Math::PI) * Math.sin(teta * Math::PI / 180) + @run.start_latitude.to_f,
-      end_lng: distance * 360 / (2 * 6371 * Math::PI) * Math.cos(teta * Math::PI / 180) + @run.start_longitude.to_f
-    }
->>>>>>> 98de11134dd4a001f894cda9a2f51e47f0402586
   end
 
   def update
