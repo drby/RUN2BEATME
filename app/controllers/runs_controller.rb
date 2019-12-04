@@ -35,12 +35,12 @@ class RunsController < ApplicationController
       @run.user_id = current_user.id
       @run.save
       ActionCable.server.broadcast("race_#{@race.id}", {
-       race_partial: ApplicationController.renderer.render(
-        partial: "races/opponents",
-        locals: { runs_opponents: Run.where(id: @run.id),
-        race: @race }
-      ),
-     })
+        race_partial: ApplicationController.renderer.render(
+          partial: "races/opponents",
+          locals: { runs_opponents: Run.where(id: @run.id),
+          race: @race }
+          )
+        })
     end
     redirect_to race_path(@race)
   end

@@ -33,27 +33,37 @@ class RacesController < ApplicationController
   def update
     @race = Race.find(params[:id])
     @challenge = @race.challenge
+    @runs = Run.where(race_id: @race.id)
 
     if @race.pending? # si le bouton start est clique et que la race démarre
       @race.update(progress: 1, start_at: DateTime.now) # alors on update a in_progress et on lui affecte le temps du départ
-      @race.runs.first.update(start_latitude: params[:lat], start_longitude: params[:long])
-      @race.runs.last.update(start_latitude: params[:lat], start_longitude: params[:long])
+      @race.runs.find_by(user: current_user).update(start_latitude: params[:lat], start_longitude: params[:long])
+      @race.runs.where.not(user: current_user).first.update(start_latitude: params[:lat], start_longitude: params[:long])
+
     elsif @race.in_progress? && params[:finished] == "true" # si le bouton finish est clique et que la race est a in_progress
       @race.update(progress: 2) # on passe le statut a finished
 
-      @race.runs.first.update(state: 1) # on dit que c'est le 1er user qui a gagne
-      @race.runs.first.update(finished_at: DateTime.now) # on lui affecte le temps d'arrive
-      w1 = @race.runs.first.user.wallet
-      @race.runs.first.user.update(wallet: (w1 + @challenge.bet)) # on lui credite son compte le temps d'arrive
+      @race.runs.find_by(user: current_user).update(state: 1) # on dit que c'est le 1er user qui a gagne
+      @race.runs.find_by(user: current_user).update(finished_at: DateTime.now) # on lui affecte le temps d'arrive
+      w1 = current_user.wallet
+      current_user.update(wallet: (w1 + @challenge.bet)) # on lui credite son compte le temps d'arrive
 
-      @race.runs.last.update(state: 2) # on dit que c'est le 2eme user qui a perdu
-      @race.runs.last.update(finished_at: DateTime.now) # on lui affecte le temps d'arrive
-      w2 = @race.runs.last.user.wallet
-      @race.runs.last.user.update(wallet: (w2 - @challenge.bet)) # on lui debite son compte le temps d'arrive
+      @race.runs.where.not(user: current_user).first.update(state: 2) # on dit que c'est le 2eme user qui a perdu
+      @race.runs.where.not(user: current_user).first.update(finished_at: DateTime.now) # on lui affecte le temps d'arrive
+      w2 = @race.runs.where.not(user: current_user).first.user.wallet
+      @race.runs.where.not(user: current_user).first.user.update(wallet: (w2 - @challenge.bet)) # on lui debite son compte le temps d'arrive
+      ActionCable.server.broadcast("race_#{@race.id}", {
+        race_partial: ApplicationController.renderer.render(
+          partial: "races/finished",
+          locals: {race: @race, runs: @runs, winner: current_user }
+          )
+        })
     end
+
     respond_to do |format|
       # format.html { redirect_to race_path(@race) }
       format.js # <-- will render `app/views/races/update.js.erb`
     end
+
   end
 end
