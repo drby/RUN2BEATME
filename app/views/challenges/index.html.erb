@@ -3,15 +3,18 @@
   <div class="card-challenge">
     <div class="card-c-infos">
       <div class="card-c-details">
-        <p>Category: <%= challenge.category %></p>
+        <% if challenge.classic_run? %>
+        <% cat = "classic run" %>
+        <p>Category: <%= cat %></p>
+        <% end  %>
         <h1>Distance: <%= challenge.distance / 100 %> km</h1>
       </div>
       <div class="card-c-bet">
         <h2><%= challenge.bet %> €</h2>
       </div>
     </div>
-    <div class="btn-flat text-center mt-3" >
-      <%= link_to "Bet & Run now !", challenge_runs_path(challenge), method: :post, class: "btn-flat"  %>
+    <div class="btn-flat text-center mt-3" id="bet" >
+      <%= link_to "Bet & Run !", challenge_runs_path(challenge), method: :post, class: "btn-flat"  %>
     </div>
   </div>
 
