@@ -4,6 +4,8 @@
   padding: 8px 24px;
   border-radius: 4px;
   background: $yellow;
+  text-decoration: none !important;
+
 }
 
 .btn-home {
@@ -11,7 +13,9 @@
   font-size: 28px;
   border-radius: 30px;
   letter-spacing: 2px;
-  text-decoration: none;
+  text-decoration: none !important;
+  outline: none !important;
+  border: none !important;
 }
 
 
@@ -19,14 +23,22 @@
   font-size: 24px;
   padding: 20px;
   border-radius: 50px;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 
 .btn_sign_left {
   margin-left: 50px;
+  text-decoration: none !important;
 }
 
 #btn-launch-race {
   visibility: hidden;
+  text-decoration: none !important;
+}
+
+.btn.btn-primary.btn-lg {
+  outline: none !important;
+  border: none !important;
+  text-decoration: none !important;
 }
