@@ -5,20 +5,40 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
   .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
+    background-color: #202020;
+    color: #EB9E07;
+    font-size: 14px;
     text-align: center;
     font-family: arial, sans-serif;
     margin: 0;
+    padding: 10px;
   }
 
-  .rails-default-error-page div.dialog {
+  .dialog {
+    padding: 30px;
+  }
+
+  #link {
+    text-decoration: none;
+    font-family: arial, sans-serif;
+    font-size: 20px;
+    color: #EB9E07;
+    border: solid;
+    margin-top: 20px;
+    padding: 10px;
+  }
+
+  .giphy {
+    text-align: center;
+  }
+
+/*  .rails-default-error-page div.dialog {
     width: 95%;
     max-width: 33em;
     margin: 4em auto 0;
-  }
+  }*/
 
-  .rails-default-error-page div.dialog > div {
+/*  .rails-default-error-page div.dialog > div {
     border: 1px solid #CCC;
     border-right-color: #999;
     border-left-color: #999;
@@ -29,8 +49,8 @@
     background-color: white;
     padding: 7px 12% 0;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-
+  }*/
+/*
   .rails-default-error-page h1 {
     font-size: 100%;
     color: #730E15;
@@ -50,7 +70,7 @@
     border-top-color: #DADADA;
     color: #666;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+  }*/
   </style>
 </head>
 
@@ -58,10 +78,11 @@
   <!-- This file lives in public/404.html -->
   <div class="dialog">
     <div>
+      <h1>404</h1>
+      <br>
       <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
-    </div>
-    <p>If you are the application owner check the logs for more information.</p>
   </div>
+  <iframe src="https://giphy.com/embed/iHe7mA9M9SsyQ" width="300" height="300" frameBorder="0" class="giphy" allowFullScreen></iframe>
+  <a href="/" id="link">Back to Home Page</a>
 </body>
 </html>
