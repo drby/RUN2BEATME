@@ -226,7 +226,7 @@ const mapElement = document.getElementById('map');
     container: 'map', // container id
     style: 'mapbox://styles/tomdarby/ck3srscoe0b4s1cp1y57htqy2', //hosted style id
     center: [init_coords.start_lng, init_coords.start_lat], // starting position
-    zoom: 13, // starting zoom
+    zoom: 12, // starting zoom
     minZoom: 1 // keep it local
   });
   var size = 150;
