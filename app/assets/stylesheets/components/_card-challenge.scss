@@ -17,17 +17,18 @@
 }
 
 .card-c-bet {
-  background: $light-brown;
+  background: #6B6B6B;
   height: 90px;
   width: 90px;
   border-radius: 50%;
+  border: 2px solid #FDF851;
   text-align: center;
 }
 
 .card-c-bet h2 {
   line-height: 90px;
   font-size: 24px;
-  color: $light-black;
+  color: #FDF851;
 }
 
 .card-c-bet.lost {

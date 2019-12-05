@@ -7,8 +7,10 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 52px;
+  width: 80px;
   border-radius: 50%;
+  border: 3px solid #FDF851;
+
 }
 
 .navbar-light .navbar-toggler {
@@ -17,10 +19,10 @@
 }
 
 .nav-wallet {
-  font-weight: bold;
+  font-weight: normal;
   margin: 0;
-  font-size: medium;
-  margin-left: 170px;
+  font-size: 18px;
+  margin-left: 140px;
 }
 
 .nav-item a {
@@ -43,4 +45,9 @@
 .fa-bars:before {
   content: "\f0c9";
   color: $black;
+}
+
+#bet {
+  font-size: 20px;
+  letter-spacing: 2px;
 }
