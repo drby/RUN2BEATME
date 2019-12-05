@@ -224,7 +224,7 @@ const mapElement = document.getElementById('map');
   mapboxgl.accessToken = 'pk.eyJ1IjoidG9tZGFyYnkiLCJhIjoiY2syZ2FhNm1uMHFsdTNpcGJvZjN2dmRwdiJ9.p_xq3xb9jlOwct9IlLwYqQ';
   var map = new mapboxgl.Map({
     container: 'map', // container id
-    style: 'mapbox://styles/tomdarby/ck3h7hmz70sf81cmz42fwcduc', //hosted style id
+    style: 'mapbox://styles/tomdarby/ck3srscoe0b4s1cp1y57htqy2', //hosted style id
     center: [init_coords.start_lng, init_coords.start_lat], // starting position
     zoom: 13, // starting zoom
     minZoom: 1 // keep it local
