@@ -8,6 +8,11 @@
 
 }
 
+.btn-flat:hover {
+  text-decoration: none !important;
+  color: $black;
+}
+
 .btn-home {
   padding : 17px 64px;
   font-size: 28px;

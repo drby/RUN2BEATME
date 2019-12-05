@@ -1,0 +1,36 @@
+.highlighted {
+    padding: 2px 15px 4px;
+    font-style: normal;
+    border-radius: 3px;
+}
+
+// .highlighted, .highlighted i {
+//     font-family: CircularStd-Black;
+// }
+
+.highlighted-yellow {
+  color: $yellow;
+  background: rgba(253, 251, 160, 0.1);
+  margin: 17px;
+}
+
+.marketing {
+  padding: 2px 15px 4px;
+  text-align: center;
+  color: $yellow;
+  margin: 13px;
+  margin-top: 10px;
+  padding-bottom: 6px;
+
+}
+
+.profile {
+  width: 100px;
+  border-radius: 50%;
+  border: 3px solid #FDF851;
+}
+
+#download {
+  margin-bottom: 45px;
+  margin-top: 20px;
+}

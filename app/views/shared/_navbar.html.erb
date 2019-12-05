@@ -2,6 +2,8 @@
   <%= link_to "#", class: "navbar-brand" do %>
     <%= image_tag(current_user.photo) %>
   <% end %>
+  <img src="/assets/logo3R2B-bc76172352aa5408f621ebd11fd844449c57cf49b938cb5bd861e746611b4f94.png" id="logo1" data-toggle="modal" data-target="#myModal">
+  <%#= image_tag("logo3R2B") %>
   <p class="nav-wallet">
     <% if user_signed_in? %>
       <%= current_user.wallet %>
@@ -11,9 +13,9 @@
     <% end %>
   </p>
   <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary btn-lg shadow-none" data-toggle="modal" data-target="#myModal" id="burger-menu">
+  <!-- <button type="button" class="btn btn-primary btn-lg shadow-none" data-toggle="modal" data-target="#myModal" id="burger-menu">
     <i class="fas fa-bars"></i>
-  </button>
+  </button> -->
   <!-- Modal -->
 </div>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
