@@ -1,4 +1,9 @@
 .navbar-lewagon {
+  background-color: $black;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
+  z-index: 1;
   justify-content: space-between;
 }
 
