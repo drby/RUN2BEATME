@@ -4,7 +4,9 @@
   <div class="card-challenge">
     <div class="card-c-infos">
       <div class="card-c-details">
-        <p>Run category: <%= run.race.challenge.category %></p>
+        <% if run.race.challenge.classic_run? %>
+          <p>Run category: classic run </p>
+        <% end %>
         <h1>Run distance: <%= run.race.challenge.distance / 100 %> km</h1>
         <p><u>Run date:</u> <%= run.finished_at.to_formatted_s(:long_ordinal) %></p>
         <% opponent = run.race.users.select{ |user| user != current_user }.first %>
