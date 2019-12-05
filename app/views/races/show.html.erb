@@ -29,6 +29,10 @@
     >
     </div>
 
+    <% if @race.in_progress? %>
+      <%= render 'races/started', race: @race %>
+    <% end %>
+
 <% content_for :after_js do %>
   <script>
     App['race_<%= @race.id %>'] = App.cable.subscriptions.create(

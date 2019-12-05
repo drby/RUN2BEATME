@@ -1,17 +1,15 @@
 <div class="card-race-infos">
   <div>
-    <h1> The race is finished</h1>
-    <%# if race.runs.find_by(user: current_user).won? %>
-    <%# if current_user == winner %>
-      <h2>The race is Finished!!</h2>
-        <h3>Congratulations</h3>
-    <%# else %>
-<!--       <h2>You loose</h2>
-      <h3>You will do better next time</h3> -->
-    <%# end %>
+    <% if race.runs.find_by(user: current_user).won? %>
+      <h1>Congratulations</h1>
+      <h2>You Won!!</h2>
+    <% else %>
+     <h1>You loose</h1>
+      <h2>You will do better next time</h2>
+    <% end %>
   </div>
   <div class="mt-4">
-    <%= link_to "See the result", runs_path, class: "btn-flat" %>
+    <%= link_to "See all my runs", runs_path, class: "btn-flat" %>
   </div>
 </div>
 

@@ -5,8 +5,9 @@ function launchRace(raceHTML) {
 
 <% if @race.in_progress? %>
   document.location.reload(true);
-  launchRace('<%= j render "races/started", race: @race %>');
+  // launchRace('<%= j render "races/started", race: @race %>');
 <% elsif @race.finished? %>
-  // launchRace('<%= j render "races/finished", race: @race %>');
+  document.location.reload(true);
+  launchRace('<%= j render "races/finished", race: @race %>');
 <% end %>
 

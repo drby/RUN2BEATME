@@ -52,12 +52,12 @@ class RacesController < ApplicationController
       @race.runs.where.not(user: current_user).first.update(finished_at: DateTime.now) # on lui affecte le temps d'arrive
       w2 = @race.runs.where.not(user: current_user).first.user.wallet
       @race.runs.where.not(user: current_user).first.user.update(wallet: (w2 - @challenge.bet)) # on lui debite son compte le temps d'arrive
-      ActionCable.server.broadcast("race_#{@race.id}", {
-        race_partial: ApplicationController.renderer.render(
-          partial: "races/finished",
-          locals: {race: @race, runs: @runs, winner: current_user }
-          )
-        })
+      # ActionCable.server.broadcast("race_#{@race.id}", {
+      #   race_partial: ApplicationController.renderer.render(
+      #     partial: "races/finished",
+      #     locals: {race: @race, runs: @runs, winner: current_user }
+      #     )
+      #   })
     end
 
     respond_to do |format|

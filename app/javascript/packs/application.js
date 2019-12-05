@@ -3,10 +3,39 @@ import 'mapbox-gl/dist/mapbox-gl.css'; // <-- you need to uncomment the styleshe
 
 import { initMapbox } from '../plugins/init_mapbox';
 
+
+function updateTransition() {
+  var el = document.querySelector("div.infos-opponent");
+
+  if (el) {
+    el.className = "infos-opponent1";
+  } else {
+    el = document.querySelector("div.infos-opponent1");
+    el.className = "infos-opponent";
+  }
+
+  return el;
+}
+
+function updateTransition2() {
+  var el = document.querySelector("div.race-infos");
+
+  if (el) {
+    el.className = "race-infos1";
+  } else {
+    el = document.querySelector("div.race-infos1");
+    el.className = "countdown";
+  }
+
+  return el;
+}
+
 const searchCounter = setInterval( () => {
   const counterElement = document.querySelector("#counter");
   if (counterElement) {
     countdown();
+    updateTransition();
+    updateTransition2();
     clearInterval(searchCounter);
   }
 }, 5);
@@ -29,7 +58,7 @@ const submitStartingLocation = () => {
     form.prepend(input2)
 
     console.log(form);
-    // form.submit();
+
     Rails.fire(form, 'submit');
   });
 };
@@ -47,8 +76,8 @@ const countdown = () => {
     {
     const refreshId = setInterval( () => {
         const properID = CheckReload();
-        counterElement.innerText = `${ 15 - properID} s`
-        if (properID >= 15) {
+        counterElement.innerText = `${ 10 - properID} s`
+        if (properID >= 10) {
           clearInterval(refreshId);
           submitStartingLocation();
         }

@@ -1,15 +1,6 @@
-<div class="card-race-infos race-started">
-  <div>
-    <h1>The race is now in progress !</h1>
-  </div>
-
-
+<div class="card-race-infos race-started text-center">
   <div class="mt-4">
-
-    <%= link_to "Race finished!", race_path(race, finished: true), method: :patch, remote: true, class: "btn-flat" %>
-    <%#= simple_form_for (race, remote: true) do |f| %>
-        <%#= f.button :submit, id: "race-finished" %>
-     <%# end %>
+    <%= link_to "See the result!", race_path(race, finished: true), method: :patch, remote: true, class: "btn-flat" %>
   </div>
 </div>
 
