@@ -8,7 +8,9 @@
 
 }
 
-.btn-flat:after {
+.btn-flat:hover {
+  text-decoration: none !important;
+  color: $black;
 }
 
 .btn-home {
