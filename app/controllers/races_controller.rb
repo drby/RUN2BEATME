@@ -8,7 +8,7 @@ class RacesController < ApplicationController
     # @runs_pos = Run.geocoded # returns users with coordinates
 
     @run = @runs.select { |run| run.user_id == current_user.id }.first
-    direction = "N"
+    direction = ["N","S","E","W"].sample
     case direction
     when "N"
       teta = 90
