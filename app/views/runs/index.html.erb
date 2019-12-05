@@ -14,14 +14,14 @@
         <div>
           <p class="text-center">you <%= run.state %></p>
           <div class="card-c-bet">
-            <h2><%= run.race.challenge.bet %> €</h2>
+            <h2><%= run.race.challenge.bet %> <span class="fas fa-coins fa-sm"></span></h2>
           </div>
         </div>
       <% else %>
         <div>
           <p class="text-center">you <%= run.state %></p>
           <div class="card-c-bet lost">
-            <h2><%= run.race.challenge.bet %> €</h2>
+            <h2><%= run.race.challenge.bet %> <span class="fas fa-coins fa-sm"></span></h2>
           </div>
         </div>
       <% end %>
