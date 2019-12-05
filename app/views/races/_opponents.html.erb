@@ -1,18 +1,27 @@
-<p>Your opponent is...</p>
-<% runs_opponents.each do |run| %>
-  <p><%= run.user.username %></p>
 
-  <div class="avatar-opponents">
-    <%= image_tag run.user.photo%>
+<% if race.pending? %>
+  <div class="infos-opponent">
+    <p>Your opponent is...</p>
+    <% runs_opponents.each do |run| %>
+      <p><%= run.user.username %></p>
+
+      <div class="avatar-opponents">
+        <%= image_tag run.user.photo%>
+      </div>
+    <% end %>
+<% elsif race.in_progress? %>
+  <div>
+    <h1>Go !</h1>
   </div>
 <% end %>
-
-<div class="my-5" id="race">
-  <% if race.pending? %>
-  <%= render 'races/counter', race: race %>
-  <% elsif race.in_progress? %>
-    <%= render 'races/started', race: race %>
-  <% elsif race.finished? %>
-      <%= render 'races/finished', race: race %>
-  <% end %>
 </div>
+  <% if race.in_progress? == false %>
+  <div class="race-infos" id="race">
+    <% if race.pending? %>
+    <%= render 'races/counter', race: race %>
+    <% elsif race.finished? %>
+        <%= render 'races/finished', race: race %>
+    <% end %>
+  </div>
+  <% end %>
+

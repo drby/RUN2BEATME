@@ -420,16 +420,17 @@ const fakeCurrentPosition = () => {
 
 
   const checkReload2 = (() => {
-    let counter = 0;
+    let counter = -1;
     return () => {
       counter++;
       return counter;
     };
   })();
   {
+
+
   const refreshId = setInterval( () => {
     const properID = checkReload2();
-
     const coords = map.getSource("route")["_data"].geometry.coordinates
 
     map.addLayer({
@@ -455,7 +456,7 @@ const fakeCurrentPosition = () => {
           'visibility': 'visible'
         }
       });
-
+      console.log(`points-${properID}`);
       if (properID > 0) {
         const pos = map.setLayoutProperty(`points-${properID - 1}`, "visibility", "none");
       }
@@ -471,10 +472,10 @@ const fakeCurrentPosition = () => {
   }
 };
 
-
-fakeCurrentPosition()
-
-
+setTimeout(() => {
+  fakeCurrentPosition()
+  }
+  ,1000);
 }
 
 
