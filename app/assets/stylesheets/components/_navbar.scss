@@ -7,7 +7,7 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 80px;
+  width: 69px;
   border-radius: 50%;
   border: 3px solid #FDF851;
 
@@ -22,7 +22,8 @@
   font-weight: normal;
   margin: 0;
   font-size: 18px;
-  margin-left: 140px;
+  margin-left: 20px;
+  margin-right: 10px;
 }
 
 .nav-item a {
@@ -52,4 +53,7 @@
   letter-spacing: 2px;
 }
 
-
+#logo1 {
+  max-width: 155px;
+  max-height: 90px;
+}
